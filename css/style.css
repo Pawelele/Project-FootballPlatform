@@ -104,7 +104,7 @@ nav .navigation a {
 }
 
 .login_types .login-box__text {
-  font-size: 24px;
+  font-size: 20px;
   margin-top: 11px;
   color: #ffffff;
 }
@@ -116,9 +116,7 @@ nav .navigation a {
 
 .login-popup {
   position: absolute;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+  display: none;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
@@ -156,6 +154,13 @@ nav .navigation a {
   border-radius: 5px 5px 0 0;
 }
 
+.login-popup__exit {
+  position: absolute;
+  right: 8px;
+  top: 8px;
+  cursor: pointer;
+}
+
 .login-popup__title {
   font-size: 20px;
 }
@@ -186,6 +191,8 @@ nav .navigation a {
   margin-top: 10px;
   text-align: center;
   font-size: 16px;
+  border: 1px solid gray;
+  border-radius: 5px;
 }
 
 .login-popup__button {
@@ -196,5 +203,11 @@ nav .navigation a {
   border-radius: 10px;
   font-size: 16px;
   cursor: pointer;
+}
+
+.login-popup--active {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 /*# sourceMappingURL=style.css.map */

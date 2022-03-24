@@ -29,7 +29,7 @@
           {
             echo "Wszystko sie zgadza, przekierowuje";
             $_SESSION["user_id"] = $row['id'];
-            header("Location: ../player_panel.php");
+            header("Location: ../player_panel.html");
             $logged = true;
             $_SESSION["session_login"] = true;
           }
@@ -37,10 +37,7 @@
       }
       else
       {
-        if($logged == false && @$_POST['player_email'] != null)
-        {
-          header("Location: https://www.paweluchanski.pl/football?status=error");
-        }
+        header("Location: https://www.paweluchanski.pl/football?status=error");
       }
     }
   }
