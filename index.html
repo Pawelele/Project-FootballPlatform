@@ -14,12 +14,14 @@
   <!-- scripts -->
 </head>
 <body>
+
   <div class="login-popup">
     <div class="login-popup__top">
       <p class="login-popup__title">Logowanie</p>
     </div>
     <img src="img/player.png" alt="Logo panelu zawodnika" class="login-popup__img">
-    <form action="" class="login-popup__form">
+
+    <form action="php/player_login.php" method="post" class="login-popup__form">
       <input type="email" name="player_email" id="player_email" class="login-popup__input" placeholder="Podaj email">
       <input type="password" name="player_password" id="player_password" class="login-popup__input" placeholder="Podaj hasło">
       <button class="login-popup__button">Zaloguj</button>

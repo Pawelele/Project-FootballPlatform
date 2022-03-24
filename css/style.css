@@ -1,4 +1,5 @@
 * {
+  font-family: 'Roboto', sans-serif;
   margin: 0;
   padding: 0;
   -webkit-box-sizing: border-box;
@@ -6,7 +7,6 @@
 }
 
 html {
-  font-family: 'Roboto', sans-serif;
   background-color: #131A2A;
   width: 100vw;
   font-size: 16px;
@@ -20,8 +20,8 @@ html {
 
 .main-logo {
   position: absolute;
-  width: 150px;
-  height: 150px;
+  width: 100px;
+  height: 100px;
   margin-top: 48px;
   left: 50%;
   -webkit-transform: translateX(-50%);
@@ -38,7 +38,7 @@ nav .navigation {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  font-size: 22px;
+  font-size: 18px;
   text-transform: uppercase;
   color: #FFFFFF;
   list-style: none;
@@ -59,7 +59,7 @@ nav .navigation a {
           justify-content: space-evenly;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  margin-top: 375px;
+  margin-top: 330px;
 }
 
 .login_types .login-box {
@@ -76,8 +76,8 @@ nav .navigation a {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  width: 330px;
-  height: 330px;
+  width: 280px;
+  height: 280px;
   border: none;
   border-radius: 15px;
   -webkit-transition: .5s;
@@ -99,8 +99,8 @@ nav .navigation a {
 
 .login_types .login-box__img {
   margin-top: 15px;
-  width: 157px;
-  height: 157px;
+  width: 120px;
+  height: 120px;
 }
 
 .login_types .login-box__text {
@@ -130,13 +130,13 @@ nav .navigation a {
   top: 50%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
-  width: 645px;
-  height: 445px;
+  width: 450px;
+  height: 311px;
   background-color: #fff;
   border-radius: 5px;
   z-index: 99;
-  -webkit-box-shadow: 10px 10px 20px black;
-          box-shadow: 10px 10px 20px black;
+  -webkit-box-shadow: 10px 10px 10px black;
+          box-shadow: 10px 10px 10px black;
 }
 
 .login-popup__top {
@@ -149,19 +149,22 @@ nav .navigation a {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  width: 645px;
-  height: 57px;
+  width: 450px;
+  height: 40px;
   background-color: #00AA95;
   color: white;
-  font-size: 20px;
   border-radius: 5px 5px 0 0;
 }
 
+.login-popup__title {
+  font-size: 20px;
+}
+
 .login-popup__img {
-  width: 53px;
-  height: 53px;
-  margin-top: 32px;
-  margin-bottom: 20px;
+  width: 45px;
+  height: 45px;
+  margin-top: 25px;
+  margin-bottom: 10px;
 }
 
 .login-popup__form {
@@ -178,9 +181,9 @@ nav .navigation a {
 }
 
 .login-popup__input {
-  width: 374px;
-  height: 50px;
-  margin-top: 25px;
+  width: 300px;
+  height: 40px;
+  margin-top: 10px;
   text-align: center;
   font-size: 16px;
 }
