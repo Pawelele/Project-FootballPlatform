@@ -14,16 +14,199 @@ html {
 
 body {
   color: white;
-  height: 100%;
+}
+
+.top-bar {
   width: 100%;
+  height: 10px;
+  background-color: #00DD80;
+}
+
+.title {
+  margin: 50px 0 15px 35px;
+}
+
+.dashboard {
+  width: 100vw;
+  height: 99vh;
+  overflow: hidden;
+}
+
+.dashboard-panel {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  height: 100%;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  overflow: auto;
+  margin-right: 310px;
+}
+
+.dashboard-panel h1 {
+  margin-left: 40px;
+  margin-top: 40px;
+}
+
+.dashboard-menu {
+  position: absolute;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  right: 0;
+  top: 0;
+  width: 300px;
+  height: 100%;
+  background-color: #F7F7F7;
+}
+
+.dashboard-menu__bars {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  top: 30px;
+  left: -50px;
+  cursor: pointer;
+}
+
+.dashboard-menu__top {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin: 30px 15px 0 15px;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+.dashboard-menu__top-name {
+  color: black;
+  font-size: 20px;
+}
+
+.dashboard-menu__top-button {
+  width: 119px;
+  height: 35px;
+  border: none;
+  border-radius: 5px;
+  color: black;
+  background-color: #00DD80;
+  cursor: pointer;
+}
+
+.dashboard-menu .dashboard-menu__messages-title {
+  font-size: 20px;
+  color: black;
+  margin: 50px 0 40px 15px;
+}
+
+.dashboard-menu__announcement {
+  width: 250px;
+  height: 80px;
+  padding: 10px;
+  color: black;
+  margin-top: 20px;
+  margin-left: 25px;
+  font-size: 14px;
+  font-weight: 300;
+  background-color: #DDDDDD;
+  border-radius: 5px;
+}
+
+.dashboard-menu__announcement-top {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-bottom: 7px;
+  font-weight: 400;
+}
+
+.data-box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  background-color: #1B273B;
+  width: 355px;
+  height: 281px;
+  margin-left: 30px;
+  margin-top: 30px;
+  border-radius: 4px;
+}
+
+.data-box__top {
+  width: 355px;
+  height: 51px;
+  background-color: #161E31;
+  font-size: 18px;
+  text-align: center;
+  line-height: 51px;
+  border-radius: 4px 4px 0 0;
+}
+
+.data-box__data {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  height: 100%;
+  width: 100%;
+}
+
+.data-box__data-row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 60px;
+  padding: 0 10px 0 10px;
+  font-size: 16px;
+  border-bottom: 3px solid #161E31;
+}
+
+.data-box__data-row-center {
+  width: 160px;
+  text-align: left;
+}
+
+.data-box__data-row-center p:last-child {
+  font-weight: 100;
+}
+
+.data-box__data-row-right {
+  color: #00DD80;
 }
 /*# sourceMappingURL=panel.css.map */
