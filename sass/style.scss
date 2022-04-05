@@ -1,10 +1,10 @@
 * {
+  font-family: 'Roboto', sans-serif;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 html {
-  font-family: 'Roboto', sans-serif;
   background-color: #131A2A;
   width: 100vw;
   font-size: 16px;
@@ -16,8 +16,8 @@ html {
 }
 .main-logo {
   position: absolute;
-  width: 150px;
-  height: 150px;
+  width: 100px;
+  height: 100px;
   margin-top: 48px;
   left: 50%;
   transform: translateX(-50%);
@@ -29,7 +29,7 @@ nav {
 
   .navigation {
     display: flex;
-    font-size: 22px;
+    font-size: 18px;
     text-transform: uppercase;
     color: #FFFFFF;
     list-style: none;
@@ -46,15 +46,15 @@ nav {
   display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;
-  margin-top: 375px;
+  margin-top: 330px;
 
   .login-box {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 330px;
-    height: 330px;
+    width: 280px;
+    height: 280px;
     border: none;
     border-radius: 15px;
     transition: .5s;
@@ -73,11 +73,11 @@ nav {
     }
     &__img {
       margin-top: 15px;
-      width: 157px;
-      height: 157px;
+      width: 120px;
+      height: 120px;
     }
     &__text {
-      font-size: 24px;
+      font-size: 20px;
       margin-top: 11px;
       color: #ffffff;
     }
@@ -93,52 +93,58 @@ nav {
 
 .login-popup {
   position: absolute;
-  display: flex;
+  display: none;
   flex-direction: column;
   align-items: center;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  width: 645px;
-  height: 445px;
+  width: 450px;
+  height: 311px;
   background-color: #fff;
   border-radius: 5px;
   z-index: 99;
-  box-shadow: 10px 10px 20px black;
+  box-shadow: 10px 10px 10px black;
 
   &__top {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 645px;
-    height: 57px;
+    width: 450px;
+    height: 40px;
     background-color: #00AA95;
     color: white;
-    font-size: 20px;
     border-radius: 5px 5px 0 0;
   }
-
-  &__img {
-    width: 53px;
-    height: 53px;
-    margin-top: 32px;
-    margin-bottom: 20px;
+  &__exit {
+    position: absolute;
+    right: 8px;
+    top: 8px;
+    cursor: pointer;
   }
-
+  &__title {
+    font-size: 20px;
+  }
+  &__img {
+    width: 45px;
+    height: 45px;
+    margin-top: 25px;
+    margin-bottom: 10px;
+  }
   &__form {
     display: flex;
     flex-direction: column;
     align-items: center;
   }
-
   &__input {
-    width: 374px;
-    height: 50px;
-    margin-top: 25px;
+    width: 300px;
+    height: 40px;
+    margin-top: 10px;
     text-align: center;
     font-size: 16px;
+    border: 1px solid gray;
+    border-radius: 5px;
   }
-
   &__button {
     width: 100px;
     height: 50px;
@@ -147,5 +153,8 @@ nav {
     border-radius: 10px;
     font-size: 16px;
     cursor: pointer;
+  }
+  &--active {
+    display: flex;
   }
 }
