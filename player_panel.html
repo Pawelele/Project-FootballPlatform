@@ -12,6 +12,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;500;700&display=swap" rel="stylesheet">
   <!-- scripts -->
+  <script src="js/player_panel.js" defer></script>
 </head>
 <body>
 
@@ -19,7 +20,7 @@
     <div class="top-bar"></div>
     <h1 class="title">Cześć, Jan!</h1>
 
-    <section class="dashboard-panel">
+    <section class="dashboard-panel dashboard-panel--activeMenu">
       <div class="data-box">
         <div class="data-box__top">
           <p>Najblizsze treningi</p>
@@ -141,7 +142,8 @@
       </div>
 
     </section>
-    <section class="dashboard-menu">
+
+    <section class="dashboard-menu dashboard-menu--active">
       <img src="img/bars-solid.svg" class="dashboard-menu__bars">
       <div class="dashboard-menu__top">
         <p class="dashboard-menu__top-name">Jan Nowak</p>

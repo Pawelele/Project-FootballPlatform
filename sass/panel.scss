@@ -14,7 +14,7 @@ body {
 }
 .top-bar {
   width: 100%;
-  height: 10px;
+  height: 8px;
   background-color: #00DD80;
 }
 .title {
@@ -22,6 +22,7 @@ body {
 }
 
 .dashboard {
+  position: relative;
   width: 100vw;
   height: 99vh;
   overflow: hidden;
@@ -29,14 +30,18 @@ body {
   &-panel {
     display: flex;
     justify-content: flex-start;
+    align-content: flex-start;
     height: 100%;
     flex-wrap: wrap;
     overflow: auto;
-    margin-right: 310px;
 
     h1 {
       margin-left: 40px;
       margin-top: 40px;
+    }
+
+    &--activeMenu {
+      margin-right: 305px;
     }
   }
 
@@ -50,6 +55,10 @@ body {
     width: 300px;
     height: 100%;
     background-color: #F7F7F7;
+    border-radius: 3px 0 0 3px;
+    box-shadow: -10px 0px 5px #00000029;
+    transition: transform .6s;
+    transform: translateX(305px);
 
     &__bars {
       position: absolute;
@@ -111,8 +120,11 @@ body {
         font-weight: 400;
       }
     }
-  }
 
+    &--active {
+      transform: translateX(0px);
+    }
+  }
 }
 
 .data-box {
@@ -125,6 +137,7 @@ body {
   margin-left: 30px;
   margin-top: 30px;
   border-radius: 4px;
+  box-shadow: 5px 5px 10px #00000029;
 
   &__top {
     width: 355px;
