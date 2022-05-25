@@ -10,10 +10,10 @@
   else
   {
     echo "Połączenie nawiązane";
-    @$login_email = $_POST['player_email'];
-    @$login_password = $_POST['player_password'];
+    @$login_email = $_POST['parent_email'];
+    @$login_password = $_POST['parent_password'];
 
-    @$sql = "SELECT * FROM Zawodnicy WHERE email='$login_email'";
+    @$sql = "SELECT * FROM Rodzice WHERE email='$login_email'";
 
     if($res = @$connect->query($sql))
     {
@@ -29,10 +29,10 @@
           {
             echo "Wszystko sie zgadza, przekierowuje";
             $_SESSION["user_id"] = $row['id'];
-            header("Location: ../player_panel.html");
+            header("Location: ../parent_panel.html");
             $logged = true;
             $_SESSION["session_login"] = true;
-            $_SESSION["session_type"] = "player";
+            $_SESSION["session_type"] = "parent";
           }
         }
       }

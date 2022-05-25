@@ -15,17 +15,45 @@
   <script src="js/main_site.js" defer></script>
 </head>
 <body>
-
+<!-- Login popup for players -->
   <div class="login-popup login-popup--player">
     <div class="login-popup__top">
       <p class="login-popup__title">Logowanie</p>
-      <p class="login-popup__exit login-popup__exit--player">X</p>
+      <p class="login-popup__exit">X</p>
     </div>
     <img src="img/player.png" alt="Logo panelu zawodnika" class="login-popup__img">
 
     <form action="php/player_login.php" method="post" class="login-popup__form">
       <input type="email" name="player_email" id="player_email" class="login-popup__input" placeholder="Podaj email">
       <input type="password" name="player_password" id="player_password" class="login-popup__input" placeholder="Podaj hasło">
+      <button class="login-popup__button">Zaloguj</button>
+    </form>
+  </div>
+<!-- Login popup for parents -->
+  <div class="login-popup login-popup--parent">
+    <div class="login-popup__top">
+      <p class="login-popup__title">Logowanie</p>
+      <p class="login-popup__exit">X</p>
+    </div>
+    <img src="img/parents.png" alt="Logo panelu zawodnika" class="login-popup__img">
+
+    <form action="php/parent_login.php" method="post" class="login-popup__form">
+      <input type="email" name="parent_email" id="parent_email" class="login-popup__input" placeholder="Podaj email">
+      <input type="password" name="parent_password" id="parent_password" class="login-popup__input" placeholder="Podaj hasło">
+      <button class="login-popup__button">Zaloguj</button>
+    </form>
+  </div>
+<!-- Login popup for coaches -->
+  <div class="login-popup login-popup--coach">
+    <div class="login-popup__top">
+      <p class="login-popup__title">Logowanie</p>
+      <p class="login-popup__exit">X</p>
+    </div>
+    <img src="img/coach.png" alt="Logo panelu zawodnika" class="login-popup__img">
+
+    <form action="php/coach_login.php" method="post" class="login-popup__form">
+      <input type="email" name="coach_email" id="coach_email" class="login-popup__input" placeholder="Podaj email">
+      <input type="password" name="coach_password" id="coach_password" class="login-popup__input" placeholder="Podaj hasło">
       <button class="login-popup__button">Zaloguj</button>
     </form>
   </div>
@@ -50,11 +78,11 @@
         <p class="login-box__text">Panel zawodnika</p>
       </div>
       <div class="login-box login-box--parents">
-        <img src="img/parents.png" alt="Logowanie dla zawodników" class="login-box__img">
+        <img src="img/parents.png" alt="Logowanie dla rodziców" class="login-box__img">
         <p class="login-box__text">Panel rodzica</p>
       </div>
       <div class="login-box login-box--coach">
-        <img src="img/coach.png" alt="Logowanie dla zawodników" class="login-box__img">
+        <img src="img/coach.png" alt="Logowanie dla trenerów" class="login-box__img">
         <p class="login-box__text">Panel trenera</p>
       </div>
     </section>
