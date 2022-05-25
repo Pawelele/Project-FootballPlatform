@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Panel zawodnika</title>
+  <title>Panel trenera</title>
   <link rel="stylesheet" href="css/panel.css">
 
   <!-- font -->
@@ -17,6 +17,11 @@
   <script src="js/weather.js" defer></script>
   <script src="js/coach.js" defer></script>
 </head>
+<?php
+  session_start();
+  if($_SESSION["session_login"]==true && $_SESSION["session_type"] == "coach")
+  {
+?>
 <body>
 
   <!-- Popups -->
@@ -81,13 +86,12 @@
     </div>
 
     <form action="php/addMatchResult.php" method="post" class="coach-popup__form">
-      <input type="text" name="match_id" id="match_id" class="coach-popup__input" required disabled>
+      <input type="number" name="match_id" id="match_id" class="coach-popup__input" required>
       <!-- <input type="text" name="group_nr" id="group_nr" class="coach-popup__input" required disabled> -->
-      <input type="text" name="rival" id="rival" class="coach-popup__input" required disabled>
+      <input type="text" name="rival" id="rival" class="coach-popup__input" required>
       <label for="played">Rozegrany:</label>
-      <input type="checkbox" value="1" name="played" id="played" checked required disabled>
+      <input type="checkbox" value=1 name="played" id="played" checked required>
       <input type="text" name="result" id="result" class="coach-popup__input" placeholder="Wynik" required>
-      <button>Dodaj strzelca</button>
       <button type="submit" class="coach-popup__button">Zapisz</button>
     </form>
   </div>
@@ -271,20 +275,20 @@
       <div class="dashboard-menu__messages">
         <p class="dashboard-menu__messages-title">Ogłoszenia:</p>
         <button class="dashboard-menu__messages-add">Dodaj</button>
-        <div class="dashboard-menu__announcement">
+        <!-- <div class="dashboard-menu__announcement">
           <div class="dashboard-menu__announcement-top">
             <div class="dashboard-menu__announcment-title">Maciej Kot</div>
             <div class="dashboard-menu__announcment-date">18.01 22:15</div>
           </div>
           <div class="dashboard-menu__announcment-message">Cześć, spóźnie się 10 minut na trening. Zróbcie rozgrzewkę, bo jak nie to będzie słąbo Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur.</div>
-        </div>
-        <div class="dashboard-menu__announcement">
+        </div> -->
+        <!-- <div class="dashboard-menu__announcement">
           <div class="dashboard-menu__announcement-top">
             <div class="dashboard-menu__announcment-title">Maciej Kot</div>
             <div class="dashboard-menu__announcment-date">18.01 22:15</div>
           </div>
           <div class="dashboard-menu__announcment-message">Cześć, spóźnie się 10 minut na trening. Zróbcie rozgrzewkę</div>
-        </div>
+        </div> -->
       </div>
 
       <div class="weather-widget">
@@ -452,4 +456,13 @@
     }
   ?>
 </body>
+<?php
+  }
+  else
+  {
+
+    header("Location: https://www.paweluchanski.pl/football/?loginStatus=failed");
+
+  }
+?>
 </html>

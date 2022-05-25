@@ -29,7 +29,7 @@
           {
             echo "Wszystko sie zgadza, przekierowuje";
             $_SESSION["user_id"] = $row['id'];
-            header("Location: ../parent_panel.html");
+            header("Location: ../parent_panel.php");
             $logged = true;
             $_SESSION["session_login"] = true;
             $_SESSION["session_type"] = "parent";

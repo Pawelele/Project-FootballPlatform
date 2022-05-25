@@ -16,6 +16,11 @@
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js" defer></script>
   <script src="js/weather.js" defer></script>
 </head>
+<?php
+  session_start();
+  if($_SESSION["session_login"]==true && $_SESSION["session_type"] == "player")
+  {
+?>
 <body>
 
   <main class="dashboard">
@@ -151,7 +156,7 @@
       <img src="img/bars-solid.svg" class="dashboard-menu__bars">
       <div class="dashboard-menu__top">
         <p class="dashboard-menu__top-name">Jan Nowak</p>
-        <button class="dashboard-menu__top-button">Wyloguj</button>
+        <a href="php/logout.php"><button class="dashboard-menu__top-button">Wyloguj</button></a>
       </div>
 
       <div class="dashboard-menu__messages">
@@ -303,4 +308,13 @@
     }
   ?>
 </body>
+<?php
+  }
+  else
+  {
+
+    header("Location: https://www.paweluchanski.pl/football/?loginStatus=failed");
+
+  }
+?>
 </html>

@@ -12,17 +12,18 @@
     echo "Połączenie nawiązane";
     @$match_id = $_POST['match_id'];
     @$played = $_POST['played'];
-    @$result = $_POST['result'];
+    @$match_result = $_POST['result'];
+
+    echo $match_id;
+    echo $played;
+    echo $match_result;
 
     $connect->query('SET NAMES utf8');
     $connect->query('SET CHARACTER_SET utf8_unicode_ci');
 
-    $zapytanie = "update Mecze set Rozegrany = $played, Wynik = $result where Id_meczu = $match_id";
+    $zapytanie = "update Mecze set Rozegrany = '$played', Wynik = '$match_result' where Id_meczu = '$match_id'";
 
 		$result = $connect->query($zapytanie);
-    header("Location: https://www.paweluchanski.pl/football/coach_panel.php?status=success");
+    // header("Location: https://www.paweluchanski.pl/football/coach_panel.php?status=success");
   }
 ?>
-
-
-update Mecze set Rozegrany = 1, Wynik = '2:3' where Id_meczu = 1;
