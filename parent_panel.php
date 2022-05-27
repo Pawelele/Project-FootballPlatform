@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Panel zawodnika</title>
+  <title>Panel rodzica</title>
   <link rel="stylesheet" href="css/panel.css">
 
   <!-- font -->
@@ -16,6 +16,11 @@
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js" defer></script>
   <script src="js/weather.js" defer></script>
 </head>
+<?php
+  session_start();
+  if($_SESSION["session_login"]==true && $_SESSION["session_type"] == "parent")
+  {
+?>
 <body>
 
   <main class="dashboard">
@@ -121,7 +126,7 @@
       <img src="img/bars-solid.svg" class="dashboard-menu__bars">
       <div class="dashboard-menu__top">
         <p class="dashboard-menu__top-name">Jan Nowak</p>
-        <button class="dashboard-menu__top-button">Wyloguj</button>
+        <a href="php/logout.php"><button class="dashboard-menu__top-button">Wyloguj</button></a>
       </div>
 
       <div class="dashboard-menu__messages">
@@ -168,9 +173,11 @@
     else
     {
       @$sql_trening = "SELECT * FROM Treningi";
-      @$sql_mecz = "SELECT * FROM Mecze";
+      @$sql_mecz = "SELECT * FROM Mecze where Rozegrany = 0";
       @$sql_strzelec = "SELECT Strzelcy.Id_strzelca, Strzelcy.Ilosc_bramek, Zawodnicy.Imie FROM Strzelcy join Zawodnicy on Zawodnicy.id_zawodnika = Strzelcy.id_zawodnika";
-      @$sql_ogloszenie = "SELECT * FROM Ogloszenia";
+      @$sql_ogloszenie = "SELECT * FROM Ogloszenia WHERE Dla_zawodnika = '0'";
+
+      $connect-> query("SET NAMES 'utf8'");
 
 
       if($rezultat = @$connect->query($sql_trening))
@@ -250,7 +257,36 @@
           ;
         }
       }
+
+      if($rezultat = @$connect->query($sql_strzelec))
+      {
+        while($row = mysqli_fetch_assoc($rezultat))
+        {
+
+          $id_strzelca = $row['Id_strzelca'];
+          $imie = $row['Imie'];
+          $ilosc_bramek= $row['Ilosc_bramek'];
+
+          echo '<script type="text/javascript">',
+          'addShooter("',
+          $imie,
+          '","',
+          $ilosc_bramek,
+          '");',
+          '</script>'
+          ;
+        }
+      }
     }
   ?>
 </body>
+<?php
+  }
+  else
+  {
+
+    header("Location: https://www.paweluchanski.pl/football/?loginStatus=failed");
+
+  }
+?>
 </html>

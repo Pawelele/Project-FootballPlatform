@@ -450,4 +450,25 @@ body {
   display: -ms-flexbox;
   display: flex;
 }
+
+.add-new-button {
+  position: absolute;
+  z-index: 99;
+  top: 35px;
+  width: 100px;
+  height: 35px;
+  border: none;
+  border-radius: 5px;
+  background-color: #00DD80;
+  color: white;
+  cursor: pointer;
+}
+
+.add-new-button--player {
+  right: 480px;
+}
+
+.add-new-button--group {
+  right: 370px;
+}
 /*# sourceMappingURL=panel.css.map */

@@ -96,6 +96,36 @@
     </form>
   </div>
 
+  <div class="add-player-popup coach-popup">
+    <div class="coach-popup__top">
+      <p class="coach-popup__title">Dodawanie nowego zawodnika</p>
+      <p class="coach-popup__exit">X</p>
+    </div>
+
+    <form action="php/addPlayer.php" method="post" class="coach-popup__form">
+      <input type="text" name="name" id="name" class="coach-popup__input" placeholder="Imie" required>
+      <input type="text" name="surname" id="surname" class="coach-popup__input" placeholder="Nazwisko" required>
+      <input type="text" name="group_nr" id="group_nr" class="coach-popup__input" placeholder="Przypisanie do grupy nr" required>
+      <input type="text" name="email" id="email" class="coach-popup__input" placeholder="Email" required>
+      <input type="text" name="password" id="password" class="coach-popup__input" placeholder="Hasło do logowania" required>
+      <button type="submit" class="coach-popup__button">Dodaj</button>
+    </form>
+  </div>
+
+  <div class="add-group-popup coach-popup">
+    <div class="coach-popup__top">
+      <p class="coach-popup__title">Dodawanie nowej grupy</p>
+      <p class="coach-popup__exit">X</p>
+    </div>
+
+    <form action="php/addGroup.php" method="post" class="coach-popup__form">
+      <input type="text" name="name" id="name" class="coach-popup__input" placeholder="Nazwa grupy" required>
+      <input type="number" name="coach_id" id="coach_id" class="coach-popup__input" placeholder="ID przypisanego trenera" required>
+      <input type="text" name="group_age" id="group_age" class="coach-popup__input" placeholder="Rocznik" required>
+      <button type="submit" class="coach-popup__button">Dodaj</button>
+    </form>
+  </div>
+
 
 
   <main class="dashboard">
@@ -269,8 +299,10 @@
       <img src="img/bars-solid.svg" class="dashboard-menu__bars">
       <div class="dashboard-menu__top">
         <p class="dashboard-menu__top-name">Jan Nowak</p>
-        <button class="dashboard-menu__top-button">Wyloguj</button>
+        <a href="php/logout.php"><button class="dashboard-menu__top-button">Wyloguj</button></a>
       </div>
+      <button class="add-new-button add-new-button--player add-new-player">Dodaj zawodnika</button>
+      <button class="add-new-button add-new-button--group add-new-group">Dodaj grupe</button>
 
       <div class="dashboard-menu__messages">
         <p class="dashboard-menu__messages-title">Ogłoszenia:</p>
@@ -321,6 +353,8 @@
       @$sql_mecz_rozegrany = "SELECT * FROM Mecze where Rozegrany = 1";
       @$sql_strzelec = "SELECT Strzelcy.Id_strzelca, Strzelcy.Ilosc_bramek, Zawodnicy.Imie FROM Strzelcy join Zawodnicy on Zawodnicy.id_zawodnika = Strzelcy.id_zawodnika";
       @$sql_ogloszenie = "SELECT * FROM Ogloszenia";
+
+      $connect-> query("SET NAMES 'utf8'");
 
 
       if($rezultat = @$connect->query($sql_trening))
