@@ -12,6 +12,9 @@ html {
 body {
   color: white;
 }
+.match_id {
+  display: none;
+}
 .top-bar {
   width: 100%;
   height: 8px;
@@ -24,7 +27,7 @@ body {
 .dashboard {
   position: relative;
   width: 100vw;
-  height: 99vh;
+  height: 100vh;
   overflow: hidden;
 
   &-panel {
@@ -92,18 +95,32 @@ body {
 
     }
 
-    .dashboard-menu__messages {
+    &__messages {
+      position: relative;
 
       &-title {
         font-size: 20px;
         color: black;
         margin: 50px 0 40px 15px;
       }
+
+      &-add {
+        position: absolute;
+        top: 48px;
+        left: 130px;
+        width: 80px;
+        height: 30px;
+        border: none;
+        border-radius: 5px;
+        color: white;
+        background-color: #1B273B;
+        cursor: pointer;
+      }
     }
 
     &__announcement {
       width: 250px;
-      height: 80px;
+      max-height: 150px;
       padding: 10px;
       color: black;
       margin-top: 20px;
@@ -111,6 +128,7 @@ body {
       font-size: 14px;
       font-weight: 300;
       background-color: #DDDDDD;
+      overflow: auto;
       border-radius: 5px;
 
       &-top {
@@ -140,6 +158,7 @@ body {
   box-shadow: 5px 5px 10px #00000029;
 
   &__top {
+    position: relative;
     width: 355px;
     height: 51px;
     background-color: #161E31;
@@ -147,6 +166,22 @@ body {
     text-align: center;
     line-height: 51px;
     border-radius: 4px 4px 0 0;
+
+    &-coach-button {
+      position: absolute;
+      right: 5px;
+      top: 12px;
+      padding: 5px 10px;
+      background-color: #F7F7F7;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+
+      &:hover {
+        transform: scale(1.03);
+        transition: .3s;
+      }
+    }
   }
   &__data {
     display: flex;
@@ -159,7 +194,7 @@ body {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      height: 60px;
+      height: 50px;
       padding: 0 10px 0 10px;
       font-size: 16px;
       border-bottom: 3px solid #161E31;
@@ -176,5 +211,153 @@ body {
         color: #00DD80;
       }
     }
+  }
+  &__result-btn {
+
+      right: 5px;
+      top: 12px;
+      padding: 0px 9px;
+      background-color: #F7F7F7;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+
+      &:hover {
+        transform: scale(1.03);
+        transition: .3s;
+      }
+  }
+}
+
+/* Weather widget*/
+
+.weather-widget{
+  position: absolute;
+  display: flex;
+  right:  15px;
+  bottom: 20px;
+  background-color: #1B273B;
+  color: white;
+  border-radius: 5px;
+  font-size: 18px;
+  font-weight: 600;
+  z-index: 98;
+  box-shadow: 0 0 10px rgba(0,0,0,.6);
+}
+
+.weather-left, .weather-middle, .weather-right{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 90px;
+  height: 150px;
+}
+
+.part{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 75px;
+  overflow: hidden;
+}
+.weather-right{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.weather-img{
+  width: 50px;
+}
+
+
+// Popups
+
+.coach-popup {
+  position: absolute;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 450px;
+  height: 400px;
+  background-color: #fff;
+  color: black;
+  border-radius: 5px;
+  z-index: 99;
+  box-shadow: 10px 10px 10px black;
+
+  &__top {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 450px;
+    height: 40px;
+    background-color: #00AA95;
+    color: white;
+    border-radius: 5px 5px 0 0;
+  }
+  &__exit {
+    position: absolute;
+    right: 8px;
+    top: 8px;
+    cursor: pointer;
+  }
+  &__title {
+    font-size: 20px;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &--training {
+      margin-top: 30px;
+    }
+  }
+  &__input {
+    width: 300px;
+    height: 35px;
+    margin-top: 15px;
+    text-align: center;
+    font-size: 14px;
+    border: 1px solid gray;
+    border-radius: 5px;
+  }
+  &__button {
+    width: 80px;
+    height: 40px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  &--active {
+    display: flex;
+  }
+}
+
+.add-new-button {
+  position: absolute;
+  z-index: 99;
+  top: 35px;
+  width: 100px;
+  height: 35px;
+  border: none;
+  border-radius: 5px;
+  background-color: #00DD80;
+  color: white;
+  cursor: pointer;
+
+  &--player {
+    right: 480px;
+  }
+
+  &--group {
+    right: 370px;
   }
 }

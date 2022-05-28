@@ -4,14 +4,15 @@
   require_once "connect.php";
   if($connect->connect_errno!=0)
   {
-    echo "Error: ".$connect->connect_errno;
+    //echo "Error: ".$connect->connect_errno;
+    echo "<br></nr>Błąd bazy danych";
   }
   else
   {
-    @$login_email = $_POST['player_email'];
-    @$login_password = $_POST['player_password'];
+    @$login_email = $_POST['parent_email'];
+    @$login_password = $_POST['parent_password'];
 
-    @$sql = "SELECT * FROM Zawodnicy WHERE email='$login_email'";
+    @$sql = "SELECT * FROM Rodzice WHERE Email='$login_email'";
 
     if($res = @$connect->query($sql))
     {
@@ -23,12 +24,11 @@
         {
           if($row['Haslo'] == $login_password)
           {
-            $_SESSION["player_id"] = $row['id_zawodnika'];
-            $_SESSION["group_id"] = $row['Id_grupy'];
-            header("Location: ../player_panel.php");
+            $_SESSION["user_id"] = $row['id'];
+            header("Location: ../parent_panel.php");
             $logged = true;
             $_SESSION["session_login"] = true;
-            $_SESSION["session_type"] = "player";
+            $_SESSION["session_type"] = "parent";
           }
         }
       }
