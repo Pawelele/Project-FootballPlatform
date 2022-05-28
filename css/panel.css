@@ -445,6 +445,16 @@ body {
   cursor: pointer;
 }
 
+.coach-popup__img {
+  height: 50px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.coach-popup--info {
+  height: 250px;
+}
+
 .coach-popup--active {
   display: -webkit-box;
   display: -ms-flexbox;

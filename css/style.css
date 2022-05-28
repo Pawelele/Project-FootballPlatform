@@ -154,6 +154,10 @@ nav .navigation a {
   border-radius: 5px 5px 0 0;
 }
 
+.login-popup__top--error {
+  background-color: #fe4646;
+}
+
 .login-popup__exit {
   position: absolute;
   right: 8px;

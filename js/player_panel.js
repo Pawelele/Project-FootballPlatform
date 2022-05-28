@@ -19,6 +19,7 @@ let mecze = document.querySelector(".data-box__data--match");
 let meczeRozegrane = document.querySelector(".data-box__data--played-match")
 let strzelcy = document.querySelector(".data-box__data--shooter");
 let ogloszenia = document.querySelector(".dashboard-menu__messages");
+let nieobecni = document.querySelector(".data-box__data--absents");
 
 
 
@@ -148,6 +149,30 @@ const addShooter = (imie, bramki) => {
   strzelec.append(row_right);
 
   strzelcy.append(strzelec);
+
+}
+
+const addAbsent = (data, typ) => {
+  let nieobecny = document.createElement("div");
+  nieobecny.classList.add("data-box__data-row");
+
+  let row_left = document.createElement("div");
+  row_left.classList.add("data-box__data-row-left")
+  row_left.innerHTML = `<p>1</p>`;
+  nieobecny.append(row_left);
+
+  let row_center = document.createElement("div");
+  row_center.classList.add("data-box__data-row-center");
+  row_center.innerHTML = `<p>${data}</p>`;
+  nieobecny.append(row_center);
+
+
+  let row_right = document.createElement("div");
+  row_right.classList.add("data-box__data-row-right");
+  row_right.innerHTML = `<p>${typ}</p>`
+  nieobecny.append(row_right);
+
+  nieobecni.append(nieobecny);
 
 }
 

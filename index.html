@@ -24,8 +24,8 @@
     <img src="img/player.png" alt="Logo panelu zawodnika" class="login-popup__img">
 
     <form action="php/player_login.php" method="post" class="login-popup__form">
-      <input type="email" name="player_email" id="player_email" class="login-popup__input" placeholder="Podaj email">
-      <input type="password" name="player_password" id="player_password" class="login-popup__input" placeholder="Podaj hasło">
+      <input type="email" name="player_email" id="player_email" class="login-popup__input" placeholder="Podaj email" required>
+      <input type="password" name="player_password" id="player_password" class="login-popup__input" placeholder="Podaj hasło" required>
       <button class="login-popup__button">Zaloguj</button>
     </form>
   </div>
@@ -38,8 +38,8 @@
     <img src="img/parents.png" alt="Logo panelu zawodnika" class="login-popup__img">
 
     <form action="php/parent_login.php" method="post" class="login-popup__form">
-      <input type="email" name="parent_email" id="parent_email" class="login-popup__input" placeholder="Podaj email">
-      <input type="password" name="parent_password" id="parent_password" class="login-popup__input" placeholder="Podaj hasło">
+      <input type="email" name="parent_email" id="parent_email" class="login-popup__input" placeholder="Podaj email" required>
+      <input type="password" name="parent_password" id="parent_password" class="login-popup__input" placeholder="Podaj hasło" required>
       <button class="login-popup__button">Zaloguj</button>
     </form>
   </div>
@@ -52,11 +52,22 @@
     <img src="img/coach.png" alt="Logo panelu zawodnika" class="login-popup__img">
 
     <form action="php/coach_login.php" method="post" class="login-popup__form">
-      <input type="email" name="coach_email" id="coach_email" class="login-popup__input" placeholder="Podaj email">
-      <input type="password" name="coach_password" id="coach_password" class="login-popup__input" placeholder="Podaj hasło">
+      <input type="email" name="coach_email" id="coach_email" class="login-popup__input" placeholder="Podaj email" required>
+      <input type="password" name="coach_password" id="coach_password" class="login-popup__input" placeholder="Podaj hasło" required>
       <button class="login-popup__button">Zaloguj</button>
     </form>
   </div>
+<!-- Login error popup -->
+<div class="login-popup login-popup__error">
+  <div class="login-popup__top login-popup__top--error">
+    <p class="login-popup__title login-popup__title">Błąd logowania</p>
+    <p class="login-popup__exit">X</p>
+  </div>
+  <br><img src="img/warning.png" alt="Ikona błędu logowania" class="login-popup__img"><br>
+
+  <h2>Wystąpił błąd</h2><br>
+  <p>Proszę zalogować się ponownie</p>
+</div>
 
   <header>
     <div class="top-bar"></div>
