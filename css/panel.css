@@ -306,6 +306,7 @@ body {
   z-index: 98;
   -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
           box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+  margin-bottom: 50px;
 }
 
 .weather-left, .weather-middle, .weather-right {
@@ -480,5 +481,46 @@ body {
 
 .add-new-button--group {
   right: 370px;
+}
+
+@media (max-width: 820px) {
+  .title {
+    margin: 100px 0 15px 35px;
+  }
+}
+
+@media (max-width: 769px) {
+  .dashboard-panel {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  .data-box {
+    margin-left: 0px;
+  }
+}
+
+@media (max-width: 600px) {
+  .add-new-button {
+    top: 35px;
+  }
+  .add-new-button--player {
+    right: 480px;
+  }
+  .add-new-button--group {
+    right: 370px;
+  }
+  .dashboard-menu--active .add-new-button {
+    display: none;
+  }
+}
+
+@media (max-width: 485px) {
+  .coach-popup {
+    width: 320px;
+  }
+  .coach-popup__top {
+    width: 320px;
+  }
 }
 /*# sourceMappingURL=panel.css.map */

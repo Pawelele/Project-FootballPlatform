@@ -19,6 +19,6 @@
     $zapytanie = "insert into Grupy (Nazwa, Id_trenera, Rocznik) values ('".$name."', '".$coachId."', '".$groupAge."')";
 
 		$result = $connect->query($zapytanie);
-    header("Location: https://www.paweluchanski.pl/football/coach_panel.php?status=success");
+    header("Location: ../coach_panel.php?status=success");
   }
 ?>

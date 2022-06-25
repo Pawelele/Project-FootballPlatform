@@ -338,7 +338,7 @@
   else
   {
 
-    header("Location: https://www.paweluchanski.pl/football/?loginStatus=failed");
+    header("Location: ./?loginStatus=failed");
 
   }
 ?>

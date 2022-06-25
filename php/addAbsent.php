@@ -19,6 +19,6 @@
     $zapytanie = "insert into Nieobecnosci (Data, id_zawodnika, Typ) values ('".$date."', '".$player_id."', '".$absent_type."')";
 
 		$result = $connect->query($zapytanie);
-    header("Location: https://www.paweluchanski.pl/football/coach_panel.php?status=success");
+    header("Location: ../coach_panel.php?status=success");
   }
 ?>

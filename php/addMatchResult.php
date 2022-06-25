@@ -14,16 +14,12 @@
     @$played = $_POST['played'];
     @$match_result = $_POST['result'];
 
-    echo $match_id;
-    echo $played;
-    echo $match_result;
-
     $connect->query('SET NAMES utf8');
     $connect->query('SET CHARACTER_SET utf8_unicode_ci');
 
     $zapytanie = "update Mecze set Rozegrany = '$played', Wynik = '$match_result' where Id_meczu = '$match_id'";
 
 		$result = $connect->query($zapytanie);
-    // header("Location: https://www.paweluchanski.pl/football/coach_panel.php?status=success");
+    header("Location: ../coach_panel.php?status=success");
   }
 ?>
