@@ -23,6 +23,6 @@
     $zapytanie = "insert into Mecze (Adres, Id_grupy, Przeciwnik, Typ_meczu, Data, Godzina) values ('".$adress."','".$groupNr."', '".$rival."', '".$matchType."', '".$date."', '".$time."')";
 
 		$result = $connect->query($zapytanie);
-    header("Location: https://www.paweluchanski.pl/football/coach_panel.php?status=success");
+    header("Location: ../coach_panel.php?status=success");
   }
 ?>

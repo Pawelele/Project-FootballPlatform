@@ -21,6 +21,6 @@
     $zapytanie = "insert into Zawodnicy (Imie, Id_grupy, Nazwisko, Email, Haslo) values ('".$name."','".$groupNr."', '".$surname."', '".$email."', '".$password."')";
 
 		$result = $connect->query($zapytanie);
-    header("Location: https://www.paweluchanski.pl/football/coach_panel.php?status=success");
+    header("Location: ../coach_panel.php?status=success");
   }
 ?>

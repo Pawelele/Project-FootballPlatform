@@ -114,6 +114,10 @@ nav {
     background-color: #00AA95;
     color: white;
     border-radius: 5px 5px 0 0;
+
+    &--error {
+      background-color: rgb(254, 70, 70);
+    }
   }
   &__exit {
     position: absolute;

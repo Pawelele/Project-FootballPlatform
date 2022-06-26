@@ -21,6 +21,6 @@
     $zapytanie = "insert into Ogloszenia (Nadawca, Id_grupy, Tresc, Dla_zawodnika) values ('".$sender."','".$groupNr."', '".$message."', '".$target_group."')";
 
 		$result = $connect->query($zapytanie);
-    header("Location: https://www.paweluchanski.pl/football/coach_panel.php?status=success");
+    header("Location: ../coach_panel.php?status=success");
   }
 ?>

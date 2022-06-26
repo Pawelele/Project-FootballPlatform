@@ -5,6 +5,7 @@ const loginCoachButton = document.querySelector('.login-box--coach');
 const loginPlayerPopup = document.querySelector('.login-popup--player');
 const loginParentPopup = document.querySelector('.login-popup--parent');
 const loginCoachPopup = document.querySelector('.login-popup--coach');
+const loginErrorPopup = document.querySelector('.login-popup__error');
 
 const popupExit = document.querySelectorAll('.login-popup__exit');
 
@@ -18,6 +19,10 @@ const openParentPopup = () => {
 
 const openCoachPopup = () => {
   loginCoachPopup.classList.toggle('login-popup--active');
+}
+
+const openLoginErrorPopup = () => {
+  loginErrorPopup.classList.toggle('login-popup--active');
 }
 
 const closePopup = (e) => {
@@ -34,3 +39,13 @@ popupExit.forEach((exit) => {
 loginPlayerButton.addEventListener('click', openPlayerPopup);
 loginParentButton.addEventListener('click', openParentPopup);
 loginCoachButton.addEventListener('click', openCoachPopup);
+
+// check for query params in url
+const params = new Proxy(new URLSearchParams(window.location.search), {
+  get: (searchParams, prop) => searchParams.get(prop),
+});
+let value = params.status;
+if(value == 'error') {
+  openLoginErrorPopup();
+  window.history.replaceState({}, document.title, "/football");
+}

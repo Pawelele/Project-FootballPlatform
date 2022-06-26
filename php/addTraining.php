@@ -22,6 +22,6 @@
     $zapytanie = "insert into Treningi (Adres, Id_grupy, Czas_trwania, Data, Godzina) values ('".$adress."','".$groupNr."', '".$duration."', '".$date."', '".$time."')";
 
 		$result = $connect->query($zapytanie);
-    header("Location: https://www.paweluchanski.pl/football/coach_panel.php?status=success");
+    header("Location: ../coach_panel.php?status=success");
   }
 ?>

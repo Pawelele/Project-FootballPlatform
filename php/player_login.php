@@ -34,7 +34,7 @@
       }
       else
       {
-        header("Location: https://www.paweluchanski.pl/football?status=error");
+        header("Location: ../?status=error");
       }
     }
   }

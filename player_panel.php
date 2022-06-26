@@ -130,23 +130,23 @@
         <div class="data-box__top">
           <p>Ostatnie nieobecności</p>
         </div>
-        <div class="data-box__data">
-          <div class="data-box__data-row">
+        <div class="data-box__data data-box__data--absents">
+          <!-- <div class="data-box__data-row">
             <div class="data-box__data-row-left">
               <p>1.</p>
             </div>
             <div class="data-box__data-row-center">
               <p>18.04.2022</p>
             </div>
-          </div>
-          <div class="data-box__data-row">
+          </div> -->
+          <!-- <div class="data-box__data-row">
             <div class="data-box__data-row-left">
               <p>2.</p>
             </div>
             <div class="data-box__data-row-center">
               <p>22.02.2022</p>
             </div>
-          </div>
+          </div> -->
         </div>
       </div>
 
@@ -207,6 +207,7 @@
       @$sql_mecz = "SELECT * FROM Mecze where Rozegrany = 0 AND Id_grupy='$group_id'";
       @$sql_strzelec = "SELECT Strzelcy.Id_strzelca, Strzelcy.Ilosc_bramek, Zawodnicy.Imie FROM Strzelcy join Zawodnicy on Zawodnicy.id_zawodnika = Strzelcy.id_zawodnika";
       @$sql_ogloszenie = "SELECT * FROM Ogloszenia WHERE Dla_zawodnika = '1' AND Id_grupy='$group_id'";
+      @$sql_nieobecnosc = "SELECT * FROM Nieobecnosci";
 
       $connect-> query("SET NAMES 'utf8'");
 
@@ -308,6 +309,27 @@
           ;
         }
       }
+
+      if($rezultat = @$connect->query($sql_nieobecnosc))
+      {
+        while($row = mysqli_fetch_assoc($rezultat))
+        {
+
+          $id_nieobecnosci = $row['Id_nieobecnoscni'];
+          $id_zawodnika = $row['Tresc'];
+          $data= $row['Data'];
+          $typ = $row['Typ'];
+
+          echo '<script type="text/javascript">',
+          'addAbsent("',
+          $data,
+          '","',
+          $typ,
+          '");',
+          '</script>'
+          ;
+        }
+      }
     }
   ?>
 </body>
@@ -316,7 +338,7 @@
   else
   {
 
-    header("Location: https://www.paweluchanski.pl/football/?loginStatus=failed");
+    header("Location: ./?loginStatus=failed");
 
   }
 ?>

@@ -86,13 +86,32 @@
     </div>
 
     <form action="php/addMatchResult.php" method="post" class="coach-popup__form">
-      <input type="number" name="match_id" id="match_id" class="coach-popup__input" required>
-      <!-- <input type="text" name="group_nr" id="group_nr" class="coach-popup__input" required disabled> -->
-      <input type="text" name="rival" id="rival" class="coach-popup__input" required>
+      <label for="match_id">ID meczu:</label>
+      <input type="number" name="match_id" id="match_id" class="coach-popup__input" required readonly>
+      <label for="rival">Klub rywala:</label>
+      <input type="text" name="rival" id="rival" class="coach-popup__input" required readonly>
       <label for="played">Rozegrany:</label>
-      <input type="checkbox" value=1 name="played" id="played" checked required>
+      <input type="checkbox" value=1 name="played" id="played" checked required readonly>
       <input type="text" name="result" id="result" class="coach-popup__input" placeholder="Wynik" required>
       <button type="submit" class="coach-popup__button">Zapisz</button>
+    </form>
+  </div>
+
+  <div class="add-absent-popup coach-popup">
+    <div class="coach-popup__top">
+      <p class="coach-popup__title">Dodawanie nieobecności</p>
+      <p class="coach-popup__exit">X</p>
+    </div>
+
+    <form action="php/addAbsent.php" method="post" class="coach-popup__form">
+      <input type="text" name="player_id" id="player_id" class="coach-popup__input" placeholder="ID zawodnika" required>
+      <input type="text" name="date" id="date" class="coach-popup__input" placeholder="Data nieobecności" required>
+      <label for="absent_type">Rodzaj nieobecności:</label>
+      <select name="absent_type" id="absent_type" class="coach-popup__input" required>
+        <option value="Trening" selected>Trening</option>
+        <option value="Mecz">Mecz</option>
+      </select>
+      <button type="submit" class="coach-popup__button">Dodaj</button>
     </form>
   </div>
 
@@ -126,7 +145,14 @@
     </form>
   </div>
 
-
+  <div class="success_popup coach-popup coach-popup--info">
+    <div class="coach-popup__top">
+      <p class="coach-popup__title">Sukces</p>
+      <p class="coach-popup__exit">X</p>
+    </div>
+    <br><img src="img/success.png" alt="Ikona sukcesu" class="coach-popup__img"><br>
+    <h2>Operacja wykonana pomyślnie</h2><br>
+  </div>
 
   <main class="dashboard">
     <div class="top-bar"></div>
@@ -272,24 +298,28 @@
       <div class="data-box">
         <div class="data-box__top">
           <p>Ostatnie nieobecności</p>
+          <button class="data-box__top-coach-button button-add-absent">Dodaj</button>
         </div>
-        <div class="data-box__data">
-          <div class="data-box__data-row">
+        <div class="data-box__data data-box__data--absents">
+          <!-- <div class="data-box__data-row">
             <div class="data-box__data-row-left">
               <p>1.</p>
             </div>
             <div class="data-box__data-row-center">
               <p>18.04.2022</p>
             </div>
-          </div>
-          <div class="data-box__data-row">
+          </div> -->
+          <!-- <div class="data-box__data-row">
             <div class="data-box__data-row-left">
               <p>2.</p>
             </div>
             <div class="data-box__data-row-center">
               <p>22.02.2022</p>
             </div>
-          </div>
+            <div class="data-box__data-row-right">
+              <p>Trening</p>
+            </div>
+          </div> -->
         </div>
       </div>
 
@@ -353,6 +383,7 @@
       @$sql_mecz_rozegrany = "SELECT * FROM Mecze where Rozegrany = 1";
       @$sql_strzelec = "SELECT Strzelcy.Id_strzelca, Strzelcy.Ilosc_bramek, Zawodnicy.Imie FROM Strzelcy join Zawodnicy on Zawodnicy.id_zawodnika = Strzelcy.id_zawodnika";
       @$sql_ogloszenie = "SELECT * FROM Ogloszenia";
+      @$sql_nieobecnosc = "SELECT * FROM Nieobecnosci";
 
       $connect-> query("SET NAMES 'utf8'");
 
@@ -468,6 +499,27 @@
         }
       }
 
+      if($rezultat = @$connect->query($sql_nieobecnosc))
+      {
+        while($row = mysqli_fetch_assoc($rezultat))
+        {
+
+          $id_nieobecnosci = $row['Id_nieobecnoscni'];
+          $id_zawodnika = $row['Tresc'];
+          $data= $row['Data'];
+          $typ = $row['Typ'];
+
+          echo '<script type="text/javascript">',
+          'addAbsent("',
+          $data,
+          '","',
+          $typ,
+          '");',
+          '</script>'
+          ;
+        }
+      }
+
       // if($rezultat = @$connect->query($sql_strzelec))
       // {
       //   while($row = mysqli_fetch_assoc($rezultat))
@@ -495,7 +547,7 @@
   else
   {
 
-    header("Location: https://www.paweluchanski.pl/football/?loginStatus=failed");
+    header("Location: ./?loginStatus=failed");
 
   }
 ?>
