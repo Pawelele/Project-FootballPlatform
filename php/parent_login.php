@@ -12,7 +12,7 @@
     @$login_email = $_POST['parent_email'];
     @$login_password = $_POST['parent_password'];
 
-    @$sql = "SELECT * FROM Rodzice WHERE Email='$login_email'";
+    @$sql = "SELECT Rodzice.Id_rodzica as Id_R, Rodzice.Imie as Imie_R, Rodzice.Nazwisko as Nazwisko_R, Rodzice.Haslo as Haslo_R ,Zawodnicy.Id_grupy as Id_G FROM Rodzice join Zawodnicy on Rodzice.Id_rodzica = Zawodnicy.Id_rodzica WHERE Rodzice.Email = '$login_email'";
 
     if($res = @$connect->query($sql))
     {
@@ -22,13 +22,18 @@
       {
         while($row = mysqli_fetch_assoc($res))
         {
-          if($row['Haslo'] == $login_password)
+          if($row['Haslo_R'] == $login_password)
           {
-            $_SESSION["user_id"] = $row['id'];
+            echo 'siemano';
+            $_SESSION["user_id"] = $row['Id_R'];
             header("Location: ../parent_panel.php");
             $logged = true;
             $_SESSION["session_login"] = true;
             $_SESSION["session_type"] = "parent";
+            $_SESSION["name"] = $row['Imie_R'];
+            $_SESSION["surname"] = $row['Nazwisko_R'];
+            $_SESSION["group_id"] = $row['Id_G'];
+
           }
         }
       }

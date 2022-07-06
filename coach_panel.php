@@ -328,7 +328,7 @@
     <section class="dashboard-menu dashboard-menu--active">
       <img src="img/bars-solid.svg" class="dashboard-menu__bars">
       <div class="dashboard-menu__top">
-        <p class="dashboard-menu__top-name">Jan Nowak</p>
+        <p class="dashboard-menu__top-name"><?php echo $_SESSION["name"]; echo ' '; echo $_SESSION["surname"];?></p>
         <a href="php/logout.php"><button class="dashboard-menu__top-button">Wyloguj</button></a>
       </div>
       <button class="add-new-button add-new-button--player add-new-player">Dodaj zawodnika</button>

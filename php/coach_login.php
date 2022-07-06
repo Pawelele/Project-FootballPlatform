@@ -27,12 +27,13 @@
         {
           if($row['Haslo'] == $login_password)
           {
-            echo "Wszystko sie zgadza, przekierowuje";
             $_SESSION["user_id"] = $row['id'];
             header("Location: ../coach_panel.php");
             $logged = true;
             $_SESSION["session_login"] = true;
             $_SESSION["session_type"] = "coach";
+            $_SESSION["name"] = $row['Imie'];
+            $_SESSION["surname"] = $row['Nazwisko'];
           }
         }
       }
