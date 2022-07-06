@@ -155,7 +155,7 @@
     <section class="dashboard-menu dashboard-menu--active">
       <img src="img/bars-solid.svg" class="dashboard-menu__bars">
       <div class="dashboard-menu__top">
-        <p class="dashboard-menu__top-name">Jan Nowak</p>
+        <p class="dashboard-menu__top-name"><?php echo $_SESSION["name"]; echo ' '; echo $_SESSION["surname"];?></p>
         <a href="php/logout.php"><button class="dashboard-menu__top-button">Wyloguj</button></a>
       </div>
 
@@ -202,12 +202,14 @@
     }
     else
     {
+      $player_id = $_SESSION["player_id"];
       $group_id = $_SESSION["group_id"];
+
       @$sql_trening = "SELECT * FROM Treningi WHERE Id_grupy='$group_id'";
       @$sql_mecz = "SELECT * FROM Mecze where Rozegrany = 0 AND Id_grupy='$group_id'";
-      @$sql_strzelec = "SELECT Strzelcy.Id_strzelca, Strzelcy.Ilosc_bramek, Zawodnicy.Imie FROM Strzelcy join Zawodnicy on Zawodnicy.id_zawodnika = Strzelcy.id_zawodnika";
+      @$sql_strzelec = "SELECT Strzelcy.Id_strzelca, Strzelcy.Ilosc_bramek, Zawodnicy.Imie FROM Strzelcy join Zawodnicy on Zawodnicy.id_zawodnika = Strzelcy.id_zawodnika where Zawodnicy.Id_grupy = '$group_id'";
       @$sql_ogloszenie = "SELECT * FROM Ogloszenia WHERE Dla_zawodnika = '1' AND Id_grupy='$group_id'";
-      @$sql_nieobecnosc = "SELECT * FROM Nieobecnosci";
+      @$sql_nieobecnosc = "SELECT * FROM Nieobecnosci where id_zawodnika = '$player_id'";
 
       $connect-> query("SET NAMES 'utf8'");
 

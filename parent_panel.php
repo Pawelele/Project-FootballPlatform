@@ -18,6 +18,7 @@
 </head>
 <?php
   session_start();
+  $name = $_SESSION["name"];
   if($_SESSION["session_login"]==true && $_SESSION["session_type"] == "parent")
   {
 ?>
@@ -25,7 +26,7 @@
 
   <main class="dashboard">
     <div class="top-bar"></div>
-    <h1 class="title">Cześć, Jan!</h1>
+    <h1 class="title">Cześć, <?php echo $_SESSION["name"] ?></h1>
 
     <section class="dashboard-panel dashboard-panel--activeMenu">
       <div class="data-box">
@@ -120,12 +121,42 @@
         </div>
       </div>
 
+      <div class="data-box">
+        <div class="data-box__top">
+          <p>Najlepsi strzelcy</p>
+        </div>
+        <div class="data-box__data data-box__data--shooter">
+          <!-- <div class="data-box__data-row">
+            <div class="data-box__data-row-left">
+              <p>1</p>
+            </div>
+            <div class="data-box__data-row-center">
+              <p>Mateusz Kowalski</p>
+            </div>
+            <div class="data-box__data-row-right">
+              <p>8</p>
+            </div>
+          </div> -->
+          <!-- <div class="data-box__data-row">
+            <div class="data-box__data-row-left">
+              <p>2</p>
+            </div>
+            <div class="data-box__data-row-center">
+              <p>Jan Nowak</p>
+            </div>
+            <div class="data-box__data-row-right">
+              <p>5</p>
+            </div>
+          </div> -->
+        </div>
+      </div>
+
     </section>
 
     <section class="dashboard-menu dashboard-menu--active">
       <img src="img/bars-solid.svg" class="dashboard-menu__bars">
       <div class="dashboard-menu__top">
-        <p class="dashboard-menu__top-name">Jan Nowak</p>
+        <p class="dashboard-menu__top-name"><?php echo $_SESSION["name"]; echo ' '; echo $_SESSION["surname"];?></p>
         <a href="php/logout.php"><button class="dashboard-menu__top-button">Wyloguj</button></a>
       </div>
 
@@ -172,10 +203,13 @@
     }
     else
     {
-      @$sql_trening = "SELECT * FROM Treningi";
-      @$sql_mecz = "SELECT * FROM Mecze where Rozegrany = 0";
-      @$sql_strzelec = "SELECT Strzelcy.Id_strzelca, Strzelcy.Ilosc_bramek, Zawodnicy.Imie FROM Strzelcy join Zawodnicy on Zawodnicy.id_zawodnika = Strzelcy.id_zawodnika";
-      @$sql_ogloszenie = "SELECT * FROM Ogloszenia WHERE Dla_zawodnika = '0'";
+      $parent_id = $_SESSION["user_id"];
+      $parentGroup_id = $_SESSION["group_id"];
+
+      @$sql_trening = "SELECT * FROM Treningi join Grupy on Treningi.Id_grupy = Grupy.Id_grupy join Zawodnicy on Grupy.Id_grupy = Zawodnicy.Id_grupy where Zawodnicy.Id_rodzica = '$parent_id'";
+      @$sql_mecz = "SELECT * FROM Mecze join Grupy on Mecze.Id_grupy = Grupy.Id_grupy where Mecze.Rozegrany = 0 and Grupy.Id_grupy = '$parentGroup_id'";
+      @$sql_strzelec = "SELECT Strzelcy.Id_strzelca, Strzelcy.Ilosc_bramek, Zawodnicy.Imie FROM Strzelcy join Zawodnicy on Zawodnicy.id_zawodnika = Strzelcy.id_zawodnika where Zawodnicy.Id_grupy = $parentGroup_id";
+      @$sql_ogloszenie = "SELECT * FROM Ogloszenia WHERE Dla_zawodnika = '0' and Id_grupy = '$parentGroup_id'";
       @$sql_nieobecnosc = "SELECT * FROM Nieobecnosci";
 
       $connect-> query("SET NAMES 'utf8'");

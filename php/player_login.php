@@ -29,6 +29,8 @@
             $logged = true;
             $_SESSION["session_login"] = true;
             $_SESSION["session_type"] = "player";
+            $_SESSION["name"] = $row['Imie'];
+            $_SESSION["surname"] = $row['Nazwisko'];
           }
         }
       }
